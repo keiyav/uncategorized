@@ -1,0 +1,68 @@
+"vi互換を切る
+set nocompatible
+set number
+
+"左右移動で行間移動できる
+set whichwrap=b,s,h,l,<,>,[,],~
+"新しい行のインデントを現在と同じにする
+set autoindent
+"SmartIndent
+set smartindent
+
+"incremental search
+set incsearch
+"小文字だけの時は大文字小文字区別しない
+set ignorecase
+set smartcase
+"検索結果をハイライト
+set hlsearch
+"シフト幅=2
+set shiftwidth=2
+"Tab幅=2
+set tabstop=2
+"行頭の余白でTabを打ち込むと'shiftwidth'の幅だけインデントする
+set smarttab
+"不可視文字の表示
+set list
+set listchars=tab:»-,trail:-,eol:↵,extends:»,precedes:«,nbsp:%
+"矩形選択で文字がなくても右に進める
+set virtualedit=block
+"beep音なくす。フラッシュになるらしいがならない。
+set visualbell
+"utf-8にしとく
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
+"カーソルの座標を右下に表示
+set ruler
+"コマンドラインの補完は全ての候補に一致する最大まで、複数ある場合はリストで表示
+set wildmode=list:longest,full
+
+"Vim起動時に実行
+if has('vim_starting')
+	"挿入モード時に非点滅の縦棒タイプのカーソル
+	let &t_SI .="\e[6 q"
+	"ノーマルモードに戻る時に非点滅のブロックタイプのカーソルにする
+	let &t_EI .= "\e[2 q"
+	"置換モード時に点滅する下線タイプのカーソル
+	let &t_SR .= "\e[3 q"
+endif
+
+syntax enable
+if &term == "xterm-256color"
+	colorscheme molokai
+	set bg=dark
+	hi Comment ctermfg=102
+	hi Visual ctermbg=240
+endif
+
+"--- remap ---
+"---- Normal ----
+"ESC2回で検索結果のハイライト解除
+nnoremap <ESC><ESC> :nohl<CR>
+
+
+"---- Visual ----
+"複数行インデントした時に、選択状態を保持
+vnoremap > >gv
+vnoremap < <gv
+
