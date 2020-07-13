@@ -22,6 +22,8 @@ set shiftwidth=2
 set tabstop=2
 "行頭の余白でTabを打ち込むと'shiftwidth'の幅だけインデントする
 set smarttab
+"タブをスペースにする
+set expandtab
 "不可視文字の表示
 set list
 set listchars=tab:»-,trail:-,eol:↵,extends:»,precedes:«,nbsp:%
@@ -36,6 +38,8 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 set ruler
 "コマンドラインの補完は全ての候補に一致する最大まで、複数ある場合はリストで表示
 set wildmode=list:longest,full
+"swpファイルを作らない
+set noswapfile
 
 "Vim起動時に実行
 if has('vim_starting')
